@@ -22,4 +22,6 @@ From now on, we're will be more freeform in our assignment layouts. You guys sho
   * Don't forget to change the URL endpoint that is in your Facebook App settings from localhost to your Heroku url
   * Add the link [on the Homework sheet](https://docs.google.com/spreadsheet/ccc?key=0AjqGw-pw5UuudFhQSmJhZlRZWEhRTWcwYmxBVld6c1E#gid=6)
 
+**Note**: It is not a requirement to push any changes over to Facebook at this time, only that you can log in using Facebook and pull down information. Though if you want to be adventurous you can do it. 
+
 If you made this in the 90's you'd be a billionare.
