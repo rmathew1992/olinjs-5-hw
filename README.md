@@ -25,3 +25,9 @@ From now on, we're will be more freeform in our assignment layouts. You guys sho
 **Note**: It is not a requirement to push any changes over to Facebook at this time, only that you can log in using Facebook and pull down information. Though if you want to be adventurous you can do it. 
 
 If you made this in the 90's you'd be a billionare.
+
+## Still lost? You're almost there!
+
+There's one homework left, due Tuesday. Also, if you have questions about Facebook permissions or posting data to Facebook, check it out:
+
+**<https://github.com/olinjs/olinjs-6-hw>**
