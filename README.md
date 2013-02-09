@@ -26,6 +26,57 @@ From now on, we're will be more freeform in our assignment layouts. You guys sho
 
 If you made this in the 90's you'd be a billionare.
 
+## Super secret hint about logging out
+
+We've determined that writing some custom express middleware is probably the way you wanna go. Unless you found an easier way that makes sense. You should tell us if you did.
+
+Remember `Facebook.loginRequired()`? Well that's a middleware. It's saying that before we do our usual routing function, we want our user to login via Facebook. We can extend this principle to checking that people are logged in before every route call. We want our custom middleware to
+* check if someone is logged in or not
+* redirect to a main page if people aren't logged in
+
+The Facebook-node-sdk has a function called `req.facebook.getUser` that we can use to find the currently logged in user. Put this in your `app.js` file:
+
+```js
+function facebookGetUser() {
+  return function(req, res, next) {
+    req.facebook.getUser( function(err, user) {
+      if (!user || err){
+        res.send("you need to login");
+      } else {
+        req.user = user;
+        next();
+      }
+    });
+  }
+}
+```
+
+Now we can call this function like the following
+
+```js
+app.get('/test', facebookGetUser(), function(req, res){
+    res.send("hello there", req.user);
+});
+```
+
+Now in order to logout, we can have something like 
+
+```js
+app.get('/logout', facebookGetUser(), function(req, res){
+  req.user = null;
+  req.session.destroy();
+  res.redirect('/');
+});
+```
+
+Now every function that we call that requires a logged in user should call the `facebookGetUser` middleware before our own routing functions. This tells people to login if they're not. Now `Facebook.loginRequired` should only be called on our `/login` route.
+
+```js
+app.get('/login', Facebook.loginRequired(), function(req, res){
+  res.redirect('/');
+});
+```
+
 ## Still lost? You're almost there!
 
 There's one homework left, due Tuesday. Also, if you have questions about Facebook permissions or posting data to Facebook, check it out:
