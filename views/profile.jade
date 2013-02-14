@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  style(type="text/css")
+    body {
+        background-color: #{color};
+       
+    }
+  div(id="corner")
+
+    div(id="controls")
+      form(method="post", action="/users/personalize", id="controlForm")
+        input(type="radio", name="color", value="green")
+        | Green
+        br
+        input(type="radio", name="color", value="blue")
+        | Blue
+        br
+        input(type="radio", name="color", value="red")
+        | Red
+        br
+        input(type="radio", name="color", value="purple")
+        | Purple
+        br
+        button('type='submit')
+          | Change my settings
+    br
+    a(href="/logout", id="showControls")
+      | Logout!
+  div(id="container")
+    div(id="header")
+      h1
+        p
+          | #{profile.first_name}
+        p
+          | #{profile.last_name}
+          span(class="dot green")
+            | .
+      img(src=profpic, id="profpic")
+    
